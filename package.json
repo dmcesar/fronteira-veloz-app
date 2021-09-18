@@ -3,14 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "start": "ui5 serve --config=ui5.yaml  --open index.html",   
-    "build:ui": "run-s  build:webapp",
-    "test": "run-s lint karma",
-    "karma-ci": "karma start karma-ci.conf.js",
-    "clearCoverage": "shx rm -rf coverage",
-    "karma": "run-s clearCoverage karma-ci",
-    "lint": "eslint .",
-    "serve": "ui5 serve --config=ui5.yaml",
-    "build:webapp": "ui5 build --config=ui5.yaml --clean-dest --dest dist --include-task=generateManifestBundle"
+    "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist --include-task=generateManifestBundle"
   },
   "dependencies": {
     "@ui5/cli": "^2.11.2"
