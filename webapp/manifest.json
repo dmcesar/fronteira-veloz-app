@@ -32,7 +32,7 @@
       "viewName": "pt.FRONTEIRAVELOZ.view.App",
       "type": "XML",
       "async": true,
-      "id": "app"
+      "id": "root_view"
     },
     "dependencies": {
       "minUI5Version": "1.60.0",
@@ -74,28 +74,31 @@
         {
           "name": "App",
           "pattern": "",
-          "target": ["App"]
-        },
-        {
-          "name": "Home",
-          "pattern": "home",
-          "target": ["Home"]
+          "target": ["App"],
+          "subroutes": [
+            {
+              "name": "Home",
+              "pattern": "#home"
+            },
+            {
+              "name": "Services",
+              "pattern": "#services"
+            },
+            {
+              "name": "Contacts",
+              "pattern": "#contacts"
+            }
+          ]
         }
       ],
       "targets": {
         "App": {
+          "controlId": "app",
+          "viewId": "app_view",
           "viewType": "XML",
           "viewLevel": 1,
-          "viewId": "home",
           "viewPath": "pt.FRONTEIRAVELOZ.view",
           "viewName": "App"
-        },
-        "Home": {
-          "viewType": "XML",
-          "viewLevel": 1,
-          "viewId": "home",
-          "viewPath": "pt.FRONTEIRAVELOZ.view",
-          "viewName": "Home"
         }
       }
     }

@@ -1,8 +1,26 @@
  <mvc:View controllerName="pt.FRONTEIRAVELOZ.controller.App"
   displayBlock="true"
   xmlns="sap.m"
+  xmlns:layout="sap.ui.layout"
   xmlns:mvc="sap.ui.core.mvc">
   <Shell id="shell">
-    <App id="app"/>
+    <App id="app">
+    <pages>
+      <Page id="app_page">
+        <content>
+          <IconTabBar id="nav_bar" select=".onNavigationPress">
+            <items>
+              <IconTabFilter id="home_tab" key="Home" icon="sap-icon://home" text="{i18n>Home}"/>
+              <IconTabFilter id="services_tab" key="Services" icon="sap-icon://vehicle-repair" text="{i18n>OurServices}"/>
+              <IconTabFilter id="contacts_tab" key="Contacts" icon="sap-icon://contacts" text="{i18n>ContactUs}"/>
+            </items>
+            <content>
+              <layout:VerticalLayout id="fragment_container" width="100%"/>
+            </content>
+          </IconTabBar>
+        </content>
+      </Page>
+    </pages>
+    </App>
   </Shell>
 </mvc:View>

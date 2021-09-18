@@ -1,8 +1,0 @@
- <mvc:View controllerName="pt.FRONTEIRAVELOZ.controller.Home"
-  displayBlock="true"
-  xmlns="sap.m"
-  xmlns:mvc="sap.ui.core.mvc">
-    <Page id="home_page" title="hello world!">
-      <content></content>
-    </Page>
-</mvc:View>
