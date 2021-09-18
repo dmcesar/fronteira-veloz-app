@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "postinstall": "npm run build",
-    "start": "ui5 serve --open index.html --port=$PORT",   
+    "start": "ui5 serve --open index.html --accept-remote-connections=true --port=$PORT",   
     "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist --include-task=generateManifestBundle"
   },
   "dependencies": {
