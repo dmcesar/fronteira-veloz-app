@@ -1,0 +1,21 @@
+{
+  "generator-template-ui5-project": {
+    "projectname": "FRONTEIRAVELOZ",
+    "namespaceUI5": "pt",
+    "platform": "Static webserver",
+    "viewtype": "XML",
+    "ui5libs": "Content delivery network (OpenUI5)",
+    "newdir": false,
+    "namespaceURI": "pt",
+    "opa5pos": [
+      "Main"
+    ],
+    "opa5Journeys": [
+      "Main"
+    ],
+    "uimodules": [
+      "uimodule"
+    ],
+    "setupCompleted": true
+  }
+}
