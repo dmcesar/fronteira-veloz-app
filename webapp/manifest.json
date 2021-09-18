@@ -29,10 +29,10 @@
   "sap.ui5": {
     "flexEnabled": true,
     "rootView": {
-      "viewName": "pt.FRONTEIRAVELOZ.view.MainView",
+      "viewName": "pt.FRONTEIRAVELOZ.view.Home",
       "type": "XML",
       "async": true,
-      "id": "idAppControl"
+      "id": "app"
     },
     "dependencies": {
       "minUI5Version": "1.60.0",
@@ -66,23 +66,24 @@
         "routerClass": "sap.m.routing.Router",
         "viewType": "XML",
         "viewPath": "pt.FRONTEIRAVELOZ.view",
-        "controlId": "idAppControl",
+        "controlId": "app",
         "controlAggregation": "pages",
         "async": true
       },
       "routes": [
         {
-          "name": "RouteMainView",
-          "pattern": "RouteMainView",
-          "target": ["TargetMainView"]
+          "name": "Home",
+          "pattern": "",
+          "target": ["Home"]
         }
       ],
       "targets": {
-        "TargetMainView": {
+        "Home": {
           "viewType": "XML",
           "viewLevel": 1,
-          "viewId": "idAppControl",
-          "viewName": "MainView"
+          "viewId": "home",
+          "viewPath": "pt.FRONTEIRAVELOZ.view",
+          "viewName": "Home"
         }
       }
     }
