@@ -1,0 +1,16 @@
+<mvc:View controllerName="pt.FRONTEIRAVELOZ.controller.Master" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:layout="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Page id="master_page" backgroundDesign="List" showNavButton="false" title="{i18n>MainMenu}">
+        <content>
+            <List id="hamburger_menu_list">
+                <items>
+                    <StandardListItem id="home_nav_item" title="{i18n>Home}" icon="sap-icon://home" type="Navigation" press=".onHomeNavPress"/>
+                    <StandardListItem id="services_nav_item" title="{i18n>OurServices}" icon="sap-icon://crm-service-manager" type="Navigation" press=".onServicesNavPress"/>
+                    <StandardListItem id="vehicles_nav_item" title="{i18n>Vehicles}" icon="sap-icon://car-rental" type="Navigation" press=".onVehiclesNavPress"/>
+                </items>
+            </List>
+        </content>
+    </Page>
+</mvc:View>

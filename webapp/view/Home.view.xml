@@ -1,0 +1,21 @@
+<mvc:View controllerName="pt.FRONTEIRAVELOZ.controller.Home" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:layout="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Page id="app_page" title="{i18n>title}" titleAlignment="Center">
+        <content>
+            <IconTabBar id="nav_bar" select=".onNavigationPress" class="centeredTabBar">
+                <items>
+                    <IconTabFilter id="about_us_tab" key="AboutUs" icon="sap-icon://vehicle-repair" text="{i18n>AboutUs}"/>
+                    <IconTabSeparator/>
+                    <IconTabFilter id="find_us_tab" key="FindUs" icon="sap-icon://map" text="{i18n>FindUs}"/>
+                    <IconTabSeparator/>
+                    <IconTabFilter id="contact_us_tab" key="ContactUs" icon="sap-icon://email" text="{i18n>ContactUs}"/>
+                </items>
+                <content>
+                    <layout:VerticalLayout id="fragment_container" width="100%"/>
+                </content>
+            </IconTabBar>
+        </content>
+    </Page>
+</mvc:View>

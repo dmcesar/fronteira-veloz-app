@@ -1,0 +1,9 @@
+{
+    "HomePageImages": [  
+        [
+        {"path": "/resources/img/1.jpg"},
+        {"path": "/resources/img/2.jpg"},
+        {"path": "/resources/img/3.jpg"}
+        ]
+    ]  
+}

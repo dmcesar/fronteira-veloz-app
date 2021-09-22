@@ -8,7 +8,13 @@
       "version": "1.0.0"
     },
     "title": "{{appTitle}}",
-    "description": "{{appDescription}}"
+    "description": "{{appDescription}}",
+    "dataSources": {
+      "Data": {
+        "uri": "model/Data.json",
+        "type": "JSON"
+      }
+    }
   },
   "sap.ui": {
     "technology": "UI5",
@@ -27,12 +33,12 @@
     }
   },
   "sap.ui5": {
-    "flexEnabled": true,
+    "flexEnabled": false,
     "rootView": {
       "viewName": "pt.FRONTEIRAVELOZ.view.App",
       "type": "XML",
       "async": true,
-      "id": "root_view"
+      "id": "app"
     },
     "dependencies": {
       "minUI5Version": "1.60.0",
@@ -52,6 +58,10 @@
         "settings": {
           "bundleName": "pt.FRONTEIRAVELOZ.i18n.i18n"
         }
+      },
+      "": {
+        "type": "sap.ui.model.json.JSONModel",
+        "dataSource": "Data"
       }
     },
     "resources": {
@@ -68,37 +78,45 @@
         "viewPath": "pt.FRONTEIRAVELOZ.view",
         "controlId": "app",
         "controlAggregation": "pages",
-        "async": true
+        "async": true,
+        "clearControlAggregation": false
       },
       "routes": [
         {
-          "name": "App",
+          "name": "Home",
           "pattern": "",
-          "target": ["App"],
+          "target": ["Master", "Home"],
           "subroutes": [
             {
-              "name": "Home",
-              "pattern": "#home"
+              "name": "AboutUs",
+              "pattern": "#about-us"
             },
             {
-              "name": "Services",
-              "pattern": "#services"
-            },
-            {
-              "name": "Contacts",
-              "pattern": "#contacts"
+              "name": "ContactUs",
+              "pattern": "#contact-us"
             }
           ]
         }
       ],
       "targets": {
-        "App": {
+        "Master": {
           "controlId": "app",
-          "viewId": "app_view",
+          "viewId": "master_view",
           "viewType": "XML",
-          "viewLevel": 1,
           "viewPath": "pt.FRONTEIRAVELOZ.view",
-          "viewName": "App"
+          "viewName": "Master",
+          "clearControlAggregation": false,
+          "controlAggregation": "masterPages"
+        },
+        "Home": {
+          "controlId": "app",
+          "viewId": "home_view",
+          "viewType": "XML",
+          "viewPath": "pt.FRONTEIRAVELOZ.view",
+          "viewName": "Home",
+          "clearControlAggregation": false,
+          "controlAggregation": "detailPages",
+          "viewLevel": 1
         }
       }
     }
