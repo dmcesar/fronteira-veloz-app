@@ -1,78 +1,189 @@
-sap.ui.define([
+sap.ui.define(
+  [
     "sap/ui/core/mvc/Controller",
-    "pt/FRONTEIRAVELOZ/model/models"
-], function (Controller, Model) {
+    "pt/FRONTEIRAVELOZ/model/models",
+    "sap/m/MessageToast",
+  ],
+  function (Controller, Model, MessageToast) {
     "use strict";
 
     return Controller.extend("pt.FRONTEIRAVELOZ.controller.Home", {
+      _oModel: Model,
 
-        _oModel: Model,
+      _sRootPath: jQuery.sap.getModulePath("pt.FRONTEIRAVELOZ"),
 
-        _sRootPath: jQuery.sap.getModulePath("pt.FRONTEIRAVELOZ"),
+      _oFragments: {},
 
-        _oFragments: {},
+      onInit: function (oEvent) {
+        this.getOwnerComponent()
+          .getRouter()
+          .getRoute("AboutUs")
+          .attachMatched(this._onAboutUsRouteMatched, this);
+        this.getOwnerComponent()
+          .getRouter()
+          .getRoute("FindUs")
+          .attachMatched(this._onFindUsRouteMatched, this);
+        this.getOwnerComponent()
+          .getRouter()
+          .getRoute("ContactUs")
+          .attachMatched(this._onContactUsRouteMatched, this);
 
-        onInit: function(oEvent) {
+        this._navTo("AboutUs");
+      },
 
-            this.getOwnerComponent().getRouter().getRoute("AboutUs").attachMatched(this._onAboutUsRouteMatched, this);
-            this.getOwnerComponent().getRouter().getRoute("FindUs").attachMatched(this._onFindUsRouteMatched, this);
-            this.getOwnerComponent().getRouter().getRoute("ContactUs").attachMatched(this._onContactUsRouteMatched, this);
+      // Triggered by item press in nav bar.
+      // Calls navigation to selected subroute.
+      onNavigationPress: function (oEvent) {
+        // Get nav bar selected key
+        var sKey = oEvent.getParameter("key");
 
-            this._navTo("AboutUs");
-        },
+        // Nav to selected subroute
+        this._navTo(sKey);
+      },
 
-        // Triggered by item press in nav bar.
-        // Calls navigation to selected subroute.
-        onNavigationPress: function(oEvent) {
+      onSendEmailPress: function () {
+        var oFormOutput = this._validateMessageForm();
 
-            // Get nav bar selected key
-            var sKey = oEvent.getParameter("key");
+        if (oFormOutput === -1) {
+          var sMsg = this.getView()
+            .getModel("i18n")
+            .getResourceBundle()
+            .getText("InvalidFormMessage");
 
-            // Nav to selected subroute
-            this._navTo(sKey);
-        },
+            MessageToast.show(sMsg);
 
-        // Navigates to sRoute
-        _navTo: function(sRoute) {
-
-            this.getOwnerComponent().getRouter().navTo(sRoute);
-        },
-
-        /* Route Matched events */
-
-        _onAboutUsRouteMatched: function() {
-
-            this._showFragment("AboutUs");
-        },
-
-        _onFindUsRouteMatched: function() {
-
-            this._showFragment("FindUs");
-        },
-
-        _onContactUsRouteMatched: function() {
-
-            this._showFragment("ContactUs");
-        },
-
-        /* Fragment related methods */
-
-        _getFragment: function(sName) {
-
-            if(!this._oFragments[sName]) {
-
-                this._oFragments[sName] = sap.ui.xmlfragment(this.getView().getId(), "pt.FRONTEIRAVELOZ.view.fragments." + sName, this);
-            }
-
-            return this._oFragments[sName];
-        },
-
-        _showFragment: function(sName) {
-
-            var oContainer = this.byId("fragment_container");
-
-            oContainer.removeAllContent();
-            oContainer.insertContent(this._getFragment(sName));
+          return;
         }
+      },
+
+      _resetMessageFormInputs: function () {
+        // Get input controls
+        var oFirstNameInput = this.byId("first_name_input"),
+          oLastNameInput = this.byId("last_name_input"),
+          oEmailNameInput = this.byId("email_input"),
+          oPhoneNumberInput = this.byId("phone_number_input"),
+          oMessageInput = this.byId("message_input");
+
+        // Reset text values
+        oFirstNameInput.setValue("");
+        oLastNameInput.setValue("");
+        oEmailNameInput.setValue("");
+        oPhoneNumberInput.setValue("");
+        oMessageInput.setValue("");
+
+        // Reset value state
+        oFirstNameInput.setValueState(sap.ui.core.ValueState.None);
+        oLastNameInput.setValueState(sap.ui.core.ValueState.None);
+        oEmailNameInput.setValueState(sap.ui.core.ValueState.None);
+        oPhoneNumberInput.setValueState(sap.ui.core.ValueState.None);
+        oMessageInput.setValueState(sap.ui.core.ValueState.None);
+      },
+
+      // Updates value state of each input control.
+      // Returns object containing all fields and respective input if form was validated.
+      // Returns -1 if form was invalidated.
+      _validateMessageForm: function () {
+        // Get input controls
+        var oFirstNameInput = this.byId("first_name_input"),
+          oLastNameInput = this.byId("last_name_input"),
+          oEmailInput = this.byId("email_input"),
+          oPhoneNumberInput = this.byId("phone_number_input"),
+          oMessageInput = this.byId("message_input");
+
+        // Get text values
+        var oData = {};
+
+        oData.sFirstName = oFirstNameInput.getValue();
+        oData.sLastName = oLastNameInput.getValue();
+        oData.sEmail = oEmailInput.getValue();
+        oData.sPhoneNumber = oPhoneNumberInput.getValue();
+        oData.sMessage = oMessageInput.getValue();
+
+        var bValid = true;
+
+        // Validate each input.
+        // If input is empty, set value state to Error and invalidate form.
+        // If input is not empty, set value state to None.
+
+        if (!oData.sFirstName) {
+          oFirstNameInput.setValueState(sap.ui.core.ValueState.Error);
+          bValid = false;
+        } else {
+          oFirstNameInput.setValueState(sap.ui.core.ValueState.None);
+        }
+
+        if (!oData.sLastName) {
+          oLastNameInput.setValueState(sap.ui.core.ValueState.Error);
+          bValid = false;
+        } else {
+          oLastNameInput.setValueState(sap.ui.core.ValueState.None);
+        }
+
+        if (!oData.sEmail) {
+          oEmailInput.setValueState(sap.ui.core.ValueState.Error);
+          bValid = false;
+        } else {
+          oEmailInput.setValueState(sap.ui.core.ValueState.None);
+        }
+
+        if (!oData.sPhoneNumber) {
+          oPhoneNumberInput.setValueState(sap.ui.core.ValueState.Error);
+          bValid = false;
+        } else {
+          oPhoneNumberInput.setValueState(sap.ui.core.ValueState.None);
+        }
+
+        if (!oData.sMessage) {
+          oMessageInput.setValueState(sap.ui.core.ValueState.Error);
+          bValid = false;
+        } else {
+          oMessageInput.setValueState(sap.ui.core.ValueState.None);
+        }
+
+        // If form is valid, return input data. Otherwise return -1.
+        return bValid ? oData : -1;
+      },
+
+      // Navigates to sRoute
+      _navTo: function (sRoute) {
+        this.getOwnerComponent().getRouter().navTo(sRoute);
+      },
+
+      /* Route Matched events */
+
+      _onAboutUsRouteMatched: function () {
+        this._showFragment("AboutUs");
+      },
+
+      _onFindUsRouteMatched: function () {
+        this._showFragment("FindUs");
+      },
+
+      _onContactUsRouteMatched: function () {
+        this._showFragment("ContactUs");
+        this._resetMessageFormInputs();
+      },
+
+      /* Fragment related methods */
+
+      _getFragment: function (sName) {
+        if (!this._oFragments[sName]) {
+          this._oFragments[sName] = sap.ui.xmlfragment(
+            this.getView().getId(),
+            "pt.FRONTEIRAVELOZ.view.fragments." + sName,
+            this
+          );
+        }
+
+        return this._oFragments[sName];
+      },
+
+      _showFragment: function (sName) {
+        var oContainer = this.byId("fragment_container");
+
+        oContainer.removeAllContent();
+        oContainer.insertContent(this._getFragment(sName));
+      },
     });
-});
+  }
+);
