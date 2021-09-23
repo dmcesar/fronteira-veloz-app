@@ -1,3 +1,68 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
-    <Text text="Contact Us"/>
+<core:FragmentDefinition id="contact_us_fragment"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form">
+    <VBox height="100%" width="100%" justifyContent="SpaceAround" wrap="Wrap">
+        <FlexBox width="100%" wrap="Wrap">
+                <form:Form editable="true">
+                    <form:toolbar>
+                        <Toolbar>
+                            <Title text="{i18n>CallUs}" />
+                            <core:Icon src="sap-icon://call"/>
+                            <ToolbarSpacer/>
+                        </Toolbar>
+                    </form:toolbar>
+                    <form:formContainers>
+                        <form:FormContainer expandable="false">
+                            <form:formElements>
+                                <form:FormElement label="{i18n>FixedNumber}">
+                                    <Input value="+351 123456789" type="Tel" editable="false"/>
+                                </form:FormElement>
+                            </form:formElements>
+                            <form:formElements>
+                                <form:FormElement label="{i18n>Email}">
+                                    <Input value="office@email.com" type="Email" editable="false"/>
+                                </form:FormElement>
+                            </form:formElements>
+                        </form:FormContainer>
+                    </form:formContainers>
+                    <form:layout>
+                        <form:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"/>
+                    </form:layout>
+                </form:Form>
+        </FlexBox>
+        <FlexBox width="100%" wrap="Wrap">
+                <form:Form editable="true" width="100%">
+                    <form:toolbar>
+                        <Toolbar>
+                            <Title text="{i18n>SendMessage}"/>
+                            <core:Icon src="sap-icon://email"/>
+                            <ToolbarSpacer/>
+                            <Button text="{i18n>Send}" icon="sap-icon://paper-plane" type="Default"/>
+                        </Toolbar>
+                    </form:toolbar>
+                    <form:formContainers>
+                        <form:FormContainer expandable="false">
+                            <form:formElements>
+                                <form:FormElement label="{i18n>FirstName}">
+                                    <Input id="first_name_input" type="Text" required="true"/>
+                                </form:FormElement>
+                                <form:FormElement label="{i18n>LastName}">
+                                    <Input id="last_name_input" type="Text" required="true"/>
+                                </form:FormElement>
+                                <form:FormElement label="{i18n>PhoneNumber}">
+                                    <Input id="phone_number_input" type="Tel" required="true"/>
+                                </form:FormElement>
+                                <form:FormElement label="{i18n>Email}">
+                                    <Input id="email_input" type="Email" required="true"/>
+                                </form:FormElement>
+                            </form:formElements>
+                        </form:FormContainer>
+                    </form:formContainers>
+                    <form:layout>
+                        <form:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"/>
+                    </form:layout>
+                </form:Form>
+        </FlexBox>
+    </VBox>
 </core:FragmentDefinition>

@@ -14,8 +14,6 @@ sap.ui.define([
 
         onInit: function(oEvent) {
 
-            this.getView().setBusy(true);
-
             this.getOwnerComponent().getRouter().getRoute("AboutUs").attachMatched(this._onAboutUsRouteMatched, this);
             this.getOwnerComponent().getRouter().getRoute("FindUs").attachMatched(this._onFindUsRouteMatched, this);
             this.getOwnerComponent().getRouter().getRoute("ContactUs").attachMatched(this._onContactUsRouteMatched, this);
@@ -37,8 +35,6 @@ sap.ui.define([
         // Navigates to sRoute
         _navTo: function(sRoute) {
 
-            this.getView().setBusy(true);
-
             this.getOwnerComponent().getRouter().navTo(sRoute);
         },
 
@@ -47,22 +43,16 @@ sap.ui.define([
         _onAboutUsRouteMatched: function() {
 
             this._showFragment("AboutUs");
-
-            this.getView().setBusy(false);
         },
 
         _onFindUsRouteMatched: function() {
 
             this._showFragment("FindUs");
-
-            this.getView().setBusy(false);
         },
 
         _onContactUsRouteMatched: function() {
 
             this._showFragment("ContactUs");
-
-            this.getView().setBusy(false);
         },
 
         /* Fragment related methods */
