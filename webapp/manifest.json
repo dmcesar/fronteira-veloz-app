@@ -89,15 +89,15 @@
           "subroutes": [
             {
               "name": "AboutUs",
-              "pattern": "home#about-us"
+              "pattern": "about-us"
             },
             {
               "name": "FindUs",
-              "pattern": "home#find-us"
+              "pattern": "find-us"
             },
             {
               "name": "ContactUs",
-              "pattern": "home#contact-us"
+              "pattern": "contact-us"
             }
           ]
         }
