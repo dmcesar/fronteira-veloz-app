@@ -6,28 +6,66 @@ sap.ui.define([
 
     return Controller.extend("pt.FRONTEIRAVELOZ.controller.Home", {
 
-        oModel: Model,
+        _oModel: Model,
 
-        sRootPath: jQuery.sap.getModulePath("pt.FRONTEIRAVELOZ"),
+        _sRootPath: jQuery.sap.getModulePath("pt.FRONTEIRAVELOZ"),
 
         _oFragments: {},
 
         onInit: function(oEvent) {
 
-            this.getOwnerComponent().getRouter().getRoute("Home").attachMatched(this._onInitRouteMatched, this);
+            this.getView().setBusy(true);
+
+            this.getOwnerComponent().getRouter().getRoute("AboutUs").attachMatched(this._onAboutUsRouteMatched, this);
+            this.getOwnerComponent().getRouter().getRoute("FindUs").attachMatched(this._onFindUsRouteMatched, this);
+            this.getOwnerComponent().getRouter().getRoute("ContactUs").attachMatched(this._onContactUsRouteMatched, this);
+
+            this._navTo("AboutUs");
         },
 
-        // Everytime the user navs to App route, redirect page to Home route
-        _onInitRouteMatched: function(oEvent) {
-        },
-
-        // Triggered by item press in nav bar
+        // Triggered by item press in nav bar.
+        // Calls navigation to selected subroute.
         onNavigationPress: function(oEvent) {
 
+            // Get nav bar selected key
             var sKey = oEvent.getParameter("key");
 
-            this.getOwnerComponent().getRouter().navTo(sKey);
+            // Nav to selected subroute
+            this._navTo(sKey);
         },
+
+        // Navigates to sRoute
+        _navTo: function(sRoute) {
+
+            this.getView().setBusy(true);
+
+            this.getOwnerComponent().getRouter().navTo(sRoute);
+        },
+
+        /* Route Matched events */
+
+        _onAboutUsRouteMatched: function() {
+
+            this._showFragment("AboutUs");
+
+            this.getView().setBusy(false);
+        },
+
+        _onFindUsRouteMatched: function() {
+
+            this._showFragment("FindUs");
+
+            this.getView().setBusy(false);
+        },
+
+        _onContactUsRouteMatched: function() {
+
+            this._showFragment("ContactUs");
+
+            this.getView().setBusy(false);
+        },
+
+        /* Fragment related methods */
 
         _getFragment: function(sName) {
 
@@ -43,6 +81,7 @@ sap.ui.define([
 
             var oContainer = this.byId("fragment_container");
 
+            oContainer.removeAllContent();
             oContainer.insertContent(this._getFragment(sName));
         }
     });
