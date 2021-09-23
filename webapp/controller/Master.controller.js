@@ -7,7 +7,12 @@ sap.ui.define([
 
         onHomeNavPress: function() {
 
-            this.getOwnerComponent().getRouter().navTo("Home");
-        }
+            this._navTo("Home");
+        },
+
+        // Navigates to sRoute
+      _navTo: function (sRoute) {
+        this.getOwnerComponent().getRouter().navTo(sRoute);
+      },
     });
 });

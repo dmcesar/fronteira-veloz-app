@@ -17,6 +17,10 @@ sap.ui.define(
       onInit: function (oEvent) {
         this.getOwnerComponent()
           .getRouter()
+          .getRoute("Home")
+          .attachMatched(this._onHomeRouteMatched, this);
+        this.getOwnerComponent()
+          .getRouter()
           .getRoute("AboutUs")
           .attachMatched(this._onAboutUsRouteMatched, this);
         this.getOwnerComponent()
@@ -28,7 +32,13 @@ sap.ui.define(
           .getRoute("ContactUs")
           .attachMatched(this._onContactUsRouteMatched, this);
 
-        this._navTo("AboutUs");
+        //this._navTo("AboutUs");
+      },
+
+      onNavButtonPress: function () {
+        var oSplitApp = this.getView().getParent().getParent();
+        var oMaster = oSplitApp.getMasterPages()[0];
+        oSplitApp.toMaster(oMaster, "flip");
       },
 
       // Triggered by item press in nav bar.
@@ -50,7 +60,7 @@ sap.ui.define(
             .getResourceBundle()
             .getText("InvalidFormMessage");
 
-            MessageToast.show(sMsg);
+          MessageToast.show(sMsg);
 
           return;
         }
@@ -151,16 +161,31 @@ sap.ui.define(
 
       /* Route Matched events */
 
+      _onHomeRouteMatched: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+
+        const currentHash = oRouter.getHashChanger().getHash();
+        const sCurrentRoute = oRouter.getRouteInfoByHash(currentHash).name;
+
+        // Nav to AboutUs route if current route is Home
+        if (sCurrentRoute === "Home") {
+          this._navTo("AboutUs");
+        }
+      },
+
       _onAboutUsRouteMatched: function () {
         this._showFragment("AboutUs");
+        this.byId("nav_bar").setSelectedKey("AboutUs");
       },
 
       _onFindUsRouteMatched: function () {
         this._showFragment("FindUs");
+        this.byId("nav_bar").setSelectedKey("FindUs");
       },
 
       _onContactUsRouteMatched: function () {
         this._showFragment("ContactUs");
+        this.byId("nav_bar").setSelectedKey("ContactUs");
         this._resetMessageFormInputs();
       },
 

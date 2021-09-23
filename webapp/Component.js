@@ -20,8 +20,13 @@ sap.ui.define(
                 // enable routing
                 this.getRouter().initialize();
 
+                var oDeviceModel = models.createDeviceModel();
+                oDeviceModel.setData({
+                    isPhone: sap.ui.Device.system.phone
+                }, true);
+
                 // set the device model
-                this.setModel(models.createDeviceModel(), "device");
+                this.setModel(oDeviceModel, "device");
 
                 // set data model
                 sap.ui.getCore().setModel(this.getModel(), "oDataModel");

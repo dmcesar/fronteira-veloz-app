@@ -2,6 +2,6 @@
   xmlns="sap.m"
   xmlns:mvc="sap.ui.core.mvc">
   <Shell id="shell">
-    <SplitApp id="app" mode="HideMode" masterButtonText="{i18n>MainMenu}" />
+    <SplitApp id="app" mode="HideMode" masterButtonText="{i18n>MainMenu}"/>
   </Shell>
 </mvc:View>

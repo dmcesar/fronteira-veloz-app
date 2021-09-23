@@ -8,14 +8,27 @@
         <form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false">
             <form:content>
                 <Toolbar ariaLabelledBy="form_title_1">
-                    <Title id="form_title_1" text="{i18n>CallUs}"/>
-                    <core:Icon src="sap-icon://call"/>
+                    <Title id="form_title_1" text="{i18n>AboutUs}"/>
+                    <core:Icon src="sap-icon://business-card"/>
                     <ToolbarSpacer/>
                 </Toolbar>
+                <Label text="{i18n>Company}" />
+                <Input value="Fronteira Veloz" editable="false" type="Text"/>
                 <Label text="{i18n>OfficeNumber}" />
                 <Input value="+351 123456789" editable="false" type="Tel"/>
                 <Label text="{i18n>Email}" />
                 <Input value="office@email.com" editable="false" type="Email"/>
+                <Label text="{i18n>Address}" />
+                <Input value="Rua XPTO nº 5" editable="false" type="Text">
+					<layoutData>
+						<layout:GridData span="XL1 L4 M3 S8" />
+					</layoutData>
+				</Input>
+                <Input value="2645-054" editable="false" type="Text">
+					<layoutData>
+						<layout:GridData span="XL1 L1 M3 S4" />
+					</layoutData>
+				</Input>
                 <Toolbar ariaLabelledBy="form_title_2">
                     <Title id="form_title_2" text="{i18n>MessageUs}"/>
                     <core:Icon src="sap-icon://email"/>

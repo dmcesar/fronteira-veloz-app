@@ -2,7 +2,7 @@
     xmlns="sap.m"
     xmlns:layout="sap.ui.layout"
     xmlns:mvc="sap.ui.core.mvc">
-    <Page id="app_page" title="{i18n>title}" titleAlignment="Center">
+    <Page id="app_page" title="{i18n>title}" titleAlignment="Center" showNavButton="{device>/isPhone}" navButtonPress=".onNavButtonPress">
         <content>
             <IconTabBar id="nav_bar" select=".onNavigationPress" class="centeredTabBar">
                 <items>
