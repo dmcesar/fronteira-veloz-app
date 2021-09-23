@@ -31,13 +31,11 @@ sap.ui.define(
           .getRouter()
           .getRoute("ContactUs")
           .attachMatched(this._onContactUsRouteMatched, this);
-
-        //this._navTo("AboutUs");
       },
 
       onNavButtonPress: function () {
-        var oSplitApp = this.getView().getParent().getParent();
-        var oMaster = oSplitApp.getMasterPages()[0];
+        const oSplitApp = this.getView().getParent().getParent();
+        const oMaster = oSplitApp.getMasterPages()[0];
         oSplitApp.toMaster(oMaster, "flip");
       },
 
@@ -45,17 +43,17 @@ sap.ui.define(
       // Calls navigation to selected subroute.
       onNavigationPress: function (oEvent) {
         // Get nav bar selected key
-        var sKey = oEvent.getParameter("key");
+        const sKey = oEvent.getParameter("key");
 
         // Nav to selected subroute
         this._navTo(sKey);
       },
 
       onSendEmailPress: function () {
-        var oFormOutput = this._validateMessageForm();
+        const oFormOutput = this._validateMessageForm();
 
         if (oFormOutput === -1) {
-          var sMsg = this.getView()
+          const sMsg = this.getView()
             .getModel("i18n")
             .getResourceBundle()
             .getText("InvalidFormMessage");

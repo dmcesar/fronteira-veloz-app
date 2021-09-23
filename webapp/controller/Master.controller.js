@@ -1,18 +1,15 @@
-sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-], function (Controller) {
-    "use strict";
+sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
+  "use strict";
 
-    return Controller.extend("pt.FRONTEIRAVELOZ.controller.Master", {
+  return Controller.extend("pt.FRONTEIRAVELOZ.controller.Master", {
 
-        onHomeNavPress: function() {
+    onHomeNavPress: function () {
+      this._navTo("Home");
+    },
 
-            this._navTo("Home");
-        },
-
-        // Navigates to sRoute
-      _navTo: function (sRoute) {
-        this.getOwnerComponent().getRouter().navTo(sRoute);
-      },
-    });
+    // Navigates to sRoute
+    _navTo: function (sRoute) {
+      this.getOwnerComponent().getRouter().navTo(sRoute);
+    },
+  });
 });

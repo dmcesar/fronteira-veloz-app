@@ -1,5 +1,54 @@
-/* Enter your custom styles here */
+.centeredTabBar .sapMITBHead {
+  text-align: center;
+}
 
-.centeredTabBar .sapMITBHead{
-    text-align:center;
+/* App colors */
+#container-FRONTEIRAVELOZ---app--shell-BG {
+  background-color: #6b6969;
+}
+
+.sapMITBSelected .sapMITBContentArrow::after {
+  background: #6b6969;
+}
+
+.sapMITBFilterIcon {
+  border: 1px solid #562d2e;
+}
+
+.sapMITBSelected .sapMITBFilterDefault {
+  background: #562d2e;
+  color: #fff;
+}
+
+/* Icon default state */
+.sapUiIcon {
+  color: #562d2e;
+}
+
+/* Button default state */
+.sapMBtnInner {
+  background-color: #fff !important;
+  border-color: #fff !important;
+}
+
+/* Button hover state */
+.sapMBtnInner:hover {
+  background-color: #c4c3c3 !important;
+  border-color: #c4c3c3 !important;
+}
+
+/* Button text */
+.sapMBtnInner.sapMBtnText {
+  color: #562d2e !important;
+}
+
+/* Button icon */
+.sapMBtnInner.sapMBtnText .sapMBtnIcon {
+  color: #562d2e !important;
+}
+
+/* Emphasized button default state */
+.sapMBtnEmphasized {
+    border-color: #c4c3c3 !important;
+    background-color: #f7f7f7 !important;
 }

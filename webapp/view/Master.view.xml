@@ -8,7 +8,7 @@
                 <items>
                     <StandardListItem id="home_nav_item" title="{i18n>Home}" icon="sap-icon://home" type="Navigation" press=".onHomeNavPress"/>
                     <StandardListItem id="services_nav_item" title="{i18n>OurServices}" icon="sap-icon://crm-service-manager" type="Navigation" press=".onServicesNavPress"/>
-                    <StandardListItem id="vehicles_nav_item" title="{i18n>Vehicles}" icon="sap-icon://car-rental" type="Navigation" press=".onVehiclesNavPress"/>
+                    <StandardListItem id="stand_nav_item" title="{i18n>Stand}" icon="sap-icon://car-rental" type="Navigation" press=".onStandNavPress"/>
                 </items>
             </List>
         </content>
