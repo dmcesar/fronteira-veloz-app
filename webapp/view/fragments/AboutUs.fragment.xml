@@ -1,3 +1,39 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
-    <Text text="About Us"/>
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:layout="sap.ui.layout"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <FlexBox direction="Column" class="sapUiResponsiveContentPadding">
+        <FlexBox wrap="Wrap" justifyContent="SpaceAround">
+            <FlexBox direction="Column" alignItems="Center" class="sapUiSmallMarginTopBottom sapUiResponsiveContentPadding" backgroundDesign="Solid" width="75%">
+                <Title text="{i18n>AboutUsPageTitle}" titleStyle="H2" />
+            </FlexBox>
+            <FlexBox direction="Column" class="sapUiSmallMarginTopBottom sapUiResponsiveContentPadding" backgroundDesign="Solid">
+                <FlexBox justifyContent="SpaceAround">
+                    <Title text="{i18n>Schedule}" titleStyle="H2"/>
+                </FlexBox>
+                <FlexBox justifyContent="SpaceBetween" class="sapUiTinyMargin">
+                    <Text text="{i18n>Monday}" class="sapUiTinyMarginEnd" />
+                    <Text text="9:00-18:00" class="sapUiTinyMarginBegin"/>
+                </FlexBox>
+                <FlexBox justifyContent="SpaceBetween" class="sapUiTinyMargin">
+                    <Text text="{i18n>Tuesday}" class="sapUiTinyMarginEnd" />
+                    <Text text="9:00-18:00" class="sapUiTinyMarginBegin"/>
+                </FlexBox>
+                <FlexBox justifyContent="SpaceBetween" class="sapUiTinyMargin">
+                    <Text text="{i18n>Wednesday}" class="sapUiTinyMarginEnd" />
+                    <Text text="9:00-18:00" class="sapUiTinyMarginBegin"/>
+                </FlexBox>
+                <FlexBox justifyContent="SpaceBetween" class="sapUiTinyMargin">
+                    <Text text="{i18n>Thursday}" class="sapUiTinyMarginEnd" />
+                    <Text text="9:00-18:00" class="sapUiTinyMarginBegin"/>
+                </FlexBox>
+                <FlexBox justifyContent="SpaceBetween" class="sapUiTinyMargin">
+                    <Text text="{i18n>Friday}" class="sapUiTinyMarginEnd" />
+                    <Text text="9:00-18:00" class="sapUiTinyMarginBegin"/>
+                </FlexBox>
+            </FlexBox>
+        </FlexBox>
+        <Text text="{i18n>AboutUsPageSubTitle}" class="sapUiTinyMargin" />
+    </FlexBox>
 </core:FragmentDefinition>
